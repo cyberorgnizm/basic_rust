@@ -2,6 +2,9 @@ use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
 
+mod imutabilty;
+use imutabilty::variables;
+
 // A simple guess game using random numbers
 fn guess_game() {
     println!("Guess a number!");
@@ -46,5 +49,6 @@ fn guess_game() {
 }
 
 fn main() {
+    variables();
     guess_game();
 }

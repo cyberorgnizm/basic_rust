@@ -9,7 +9,13 @@ fn guess_game() {
     let mut g = String::new();
 
     // Panics on error!
-    io::stdin().read_line(&mut g).expect("Failed to read line!");
+    // io::stdin().read_line(&mut g).expect("Failed to read line!");
+
+    // Handles panic 🐛
+    match io::stdin().read_line(&mut g) {
+        Ok(_) => println!("Your input {}", g),
+        Err(error) => println!("Error!: {}", error),
+    }
 
     println!("You guessed, {}", g);
 }

@@ -23,8 +23,14 @@ fn guess_game() {
 
         println!("You guessed, {}", g);
 
-        // typecast
-        let g: u32 = g.trim().parse().expect("Number expected!");
+        // typecast, Panics! on error
+        // let g: u32 = g.trim().parse().expect("Number expected!");
+
+        // Handles invalid input
+        let g: u32 = match g.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
 
         match g.cmp(&secret_number) {
             Ordering::Greater => println!("Guess value too big!"),
